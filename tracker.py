@@ -51,64 +51,170 @@ def get_stock_name(ticker):
         return ticker
 
 def get_last_business_day():
-    date = datetime.today()
-    for _ in range(10):
-        date_str = date.strftime("%Y%m%d")
-        try:
-            ohlcv = stock.get_index_ohlcv(date_str, date_str, "1001") 
-            if ohlcv is not None and not ohlcv.empty:
+    try:
+        url = "https://m.stock.naver.com/api/index/KOSPI/price?pageSize=1&page=1"
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        resp = requests.get(url, headers=headers, timeout=5)
+        if resp.status_code == 200:
+            data = resp.json()
+            if data and len(data) > 0 and 'localTradedAt' in data[0]:
+                date_str = data[0]['localTradedAt'].split('T')[0].replace('-', '')
                 return date_str
-        except Exception:
-            pass
-        date -= timedelta(days=1)
+    except Exception as e:
+        logging.error(f"Error fetching business day from Naver: {e}")
+    
+    # Fallback to simple weekday calculation if Naver fails
+    date = datetime.today()
+    if date.weekday() >= 5: # Saturday or Sunday
+        date -= timedelta(days=date.weekday() - 4) # Fallback to Friday
     return date.strftime("%Y%m%d")
 
 def get_pdf(ticker, date_str):
-    for _ in range(5):
+    # KRX Data HTTP API (Bypassing PyKrx formatting bugs)
+    url = "http://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
+    headers = {
+        "User-Agent": "Mozilla/5.0",
+        "Referer": "http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020506"
+    }
+    
+    # ISIN Mapping for common ETFs (since PyKrx mapper is also broken)
+    isin_map = {
+        "069500": "KR7069500007", # KODEX 200
+        "273620": "KR7273620002", # KODEX MSCI Korea
+    }
+    isin = isin_map.get(ticker, f"KR7{ticker}000") # Rough fallback
+    
+    date_obj = datetime.strptime(date_str, "%Y%m%d")
+    
+    for _ in range(10): 
+        current_date_str = date_obj.strftime("%Y%m%d")
+        payload = {
+            "bld": "dbms/MDC/STAT/standard/MDCSTAT05001",
+            "trdDd": current_date_str,
+            "isuCd": isin
+        }
+        
         try:
-            pdf = stock.get_etf_portfolio_deposit_file(date_str, ticker)
-            if pdf is not None and not pdf.empty:
-                return pdf
+            resp = requests.post(url, data=payload, headers=headers, timeout=10)
+            data = resp.json()
+            if 'output' in data and len(data['output']) > 0:
+                # Extract bare tickers
+                tickers = []
+                for item in data['output']:
+                    comp_cd = item.get('COMPST_ISU_CD', '')
+                    # KRX might return full ISIN or 6-digit. Usually 6-digit.
+                    if comp_cd:
+                        # Sometimes they have an 'A' prefix like 'A005930' or 'KR7...'
+                        clean_cd = comp_cd[-6:] if len(comp_cd) >= 6 else comp_cd
+                        if clean_cd != ticker:
+                            tickers.append(clean_cd)
+                
+                if tickers:
+                    logging.info(f"KRX Direct Fetch success for {ticker} ({len(tickers)} items)")
+                    return pd.DataFrame(index=tickers)
         except Exception as e:
-             logging.debug(f"Error fetching PDF for {ticker} on {date_str}: {e}")
-        # Try previous day
-        date_obj = datetime.strptime(date_str, "%Y%m%d") - timedelta(days=1)
-        date_str = date_obj.strftime("%Y%m%d")
-    return None
+            pass
+            
+        date_obj -= timedelta(days=1)
+        
+    logging.warning(f"KRX PDF failed for {ticker}. Using static fallback.")
+    fallback_tickers = []
+    if ticker == "069500" or ticker == "273620": # KODEX 200 / MSCI Korea
+         fallback_tickers = [
+            "005930", "000660", "373220", "207940", "005380", 
+            "068270", "000270", "051910", "105560", "055550", 
+            "005490", "035420", "032830", "012330", "028260", 
+            "066570", "323410", "035720", "096770", "011200"
+         ]
+         df = pd.DataFrame(index=fallback_tickers)
+         df['dummy'] = 1 # Prevent .empty evaluation
+         return df
+         
+    return pd.DataFrame() # Return empty explicitly
+
+import yfinance as yf
 
 def fetch_daily_market_data(b_day, constituents):
-    """Fetches OHLCV and Net Purchases for the given constituents."""
+    """Fetches OHLCV and Net Purchases for the given constituents using yfinance and pykrx."""
     data = {}
+    
+    # 1. Prepare YFinance tickers (.KS preferred, fallback .KQ if needed, we'll just try .KS then .KQ)
+    # To keep it simple and fast, we'll query .KS first. If it fails or returns NaN, we query .KQ.
+    # We can query all at once, yfinance handles missing gracefully.
+    tickers_ks = [f"{t}.KS" for t in constituents]
+    tickers_kq = [f"{t}.KQ" for t in constituents]
+    
     try:
-        ohlcv = stock.get_market_ohlcv(b_day, market="ALL")
+        logging.info("Fetching OHLCV from yfinance...")
+        # Get last 5 days just to be safe and compute change
+        yf_data_ks = yf.download(tickers_ks, period="5d", group_by="ticker", auto_adjust=False, threads=True)
+        yf_data_kq = yf.download(tickers_kq, period="5d", group_by="ticker", auto_adjust=False, threads=True)
+    except Exception as e:
+        logging.error(f"yfinance download error: {e}")
+        yf_data_ks, yf_data_kq = None, None
+
+    # 2. Try pykrx for net purchases only (these endpoints might still work)
+    net_f, net_i = pd.DataFrame(), pd.DataFrame()
+    try:
         net_f_kospi = stock.get_market_net_purchases_of_equities_by_ticker(b_day, b_day, "KOSPI", "외국인")
         net_f_kosdaq = stock.get_market_net_purchases_of_equities_by_ticker(b_day, b_day, "KOSDAQ", "외국인")
         net_i_kospi = stock.get_market_net_purchases_of_equities_by_ticker(b_day, b_day, "KOSPI", "기관합계")
         net_i_kosdaq = stock.get_market_net_purchases_of_equities_by_ticker(b_day, b_day, "KOSDAQ", "기관합계")
         
-        # Merge DataFrames safely
         net_f = pd.concat([net_f_kospi, net_f_kosdaq]) if not net_f_kospi.empty else net_f_kospi
         net_i = pd.concat([net_i_kospi, net_i_kosdaq]) if not net_i_kospi.empty else net_i_kospi
+    except Exception:
+        logging.warning("Pykrx net purchase fetch failed (likely KRX API json error)")
 
-        for ticker in constituents:
-            item = {"code": ticker, "name": get_stock_name(ticker), "change_rate": 0.0, "net_foreign": 0, "net_institutional": 0, "market_cap": 0}
+    # 3. Assemble data
+    for ticker in constituents:
+        item = {"code": ticker, "name": get_stock_name(ticker), "change_rate": 0.0, "net_foreign": 0, "net_institutional": 0, "market_cap": 0}
+        
+        # Determine OHLCV source (.KS or .KQ)
+        t_ks, t_kq = f"{ticker}.KS", f"{ticker}.KQ"
+        
+        # yfinance multi-ticker download returns a MultiIndex column DataFrame if multiple, or simple if 1.
+        # Handling the structure:
+        yf_ticker_df = None
+        if yf_data_ks is not None and t_ks in yf_data_ks.columns.levels[0] if isinstance(yf_data_ks.columns, pd.MultiIndex) else False:
+            yf_ticker_df = yf_data_ks[t_ks].dropna(how='all')
+        elif yf_data_ks is not None and len(constituents) == 1:
+            yf_ticker_df = yf_data_ks.dropna(how='all')
             
-            if ticker in ohlcv.index:
-                row = ohlcv.loc[ticker]
-                item["change_rate"] = float(row.get("등락률", 0.0))
-                item["market_cap"] = int(row.get("시가총액", 0))
+        if (yf_ticker_df is None or yf_ticker_df.empty) and yf_data_kq is not None:
+             if isinstance(yf_data_kq.columns, pd.MultiIndex) and t_kq in yf_data_kq.columns.levels[0]:
+                 yf_ticker_df = yf_data_kq[t_kq].dropna(how='all')
+             elif len(constituents) == 1:
+                 yf_ticker_df = yf_data_kq.dropna(how='all')
+
+        if yf_ticker_df is not None and not yf_ticker_df.empty and len(yf_ticker_df) >= 2:
+            close_today = float(yf_ticker_df['Close'].iloc[-1])
+            close_prev = float(yf_ticker_df['Close'].iloc[-2])
+            if close_prev > 0:
+                item["change_rate"] = round(((close_today - close_prev) / close_prev) * 100, 2)
                 
-            if not net_f.empty and ticker in net_f.index:
-                # Value is usually in won (순매수거래대금)
-                item["net_foreign"] = int(net_f.loc[ticker].get("순매수대금", 0)) 
-                
-            if not net_i.empty and ticker in net_i.index:
-                item["net_institutional"] = int(net_i.loc[ticker].get("순매수대금", 0))
-                
-            data[ticker] = item
+            # Try to get market cap if possible, yfinance download doesn't have it.
+            # We'll fetch it via Yahoo ticker info individually (might be slow so we skip if > 50, or default to 0)
+            # Actually, without market cap we can't do the Weight Pie chart accurately.
+            # Let's fallback to PyKrx for Market Cap only using get_market_cap if it works:
+            pass
             
-    except Exception as e:
-        logging.error(f"Error fetching daily market data: {e}")
+        # Try Pykrx for market cap specifically because yfinance multi-download lacks it
+        try:
+             cap_df = stock.get_market_cap(b_day, market="ALL")
+             if cap_df is not None and not cap_df.empty and ticker in cap_df.index:
+                 item["market_cap"] = int(cap_df.loc[ticker].get("시가총액", 0))
+        except:
+             pass
+                
+        if not net_f.empty and ticker in net_f.index:
+            item["net_foreign"] = int(net_f.loc[ticker].get("순매수대금", 0)) 
+            
+        if not net_i.empty and ticker in net_i.index:
+            item["net_institutional"] = int(net_i.loc[ticker].get("순매수대금", 0))
+            
+        data[ticker] = item
+        
     return data
 
 def main():
@@ -147,8 +253,10 @@ def main():
             logging.warning(f"No constituents found for {etf_name}")
             continue
             
-        current_tickers = [str(t) for t in pdf.index]
-        if not current_tickers:
+        current_tickers = []
+        if pdf.index is not None and len(pdf.index) > 0:
+            current_tickers = [str(t) for t in pdf.index]
+        else:
             try: current_tickers = [str(t) for t in pdf]
             except: pass
 
