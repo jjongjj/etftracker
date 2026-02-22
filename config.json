@@ -2,7 +2,23 @@
   "etfs": [
     {
       "code": "273620",
-      "name": "KODEX MSCI Korea"
+      "name": "KODEX MSCI Korea",
+      "enabled": true
+    },
+    {
+      "code": "069500",
+      "name": "KODEX 200",
+      "enabled": true
+    },
+    {
+      "code": "229200",
+      "name": "KODEX 코스닥150",
+      "enabled": false
+    },
+    {
+      "code": "379800",
+      "name": "KODEX 미국테크TOP10",
+      "enabled": false
     }
   ]
 }

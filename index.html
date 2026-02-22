@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-width=1.0">
-    <title>ETF Tracker Dashboard</title>
+    <title>ETF Advanced Tracker Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,6 +16,7 @@
             --accent-hover: #2563eb;
             --success: #10b981;
             --danger: #ef4444;
+            --chart-bar: rgba(59, 130, 246, 0.5);
         }
 
         body {
@@ -31,10 +33,10 @@
 
         .header {
             width: 100%;
-            padding: 3rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
-            background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(15,23,42,1) 100%);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(15, 23, 42, 1) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .header h1 {
@@ -50,12 +52,12 @@
         .header p {
             color: var(--text-secondary);
             margin-top: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .container {
             width: 100%;
-            max-width: 1000px;
+            max-width: 1200px;
             padding: 2rem 1rem;
             box-sizing: border-box;
         }
@@ -63,201 +65,244 @@
         .etf-card {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255,255,255,0.05);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .etf-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .etf-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 1rem;
-            margin-bottom: 1.5rem;
+            align-items: flex-end;
+            margin-bottom: 1rem;
         }
 
         .etf-title {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 800;
             color: #fff;
         }
 
         .etf-code {
-            font-size: 0.9rem;
-            background: rgba(255,255,255,0.1);
-            padding: 0.3rem 0.6rem;
-            border-radius: 8px;
+            font-size: 1rem;
             color: var(--text-secondary);
+            margin-left: 0.5rem;
         }
 
-        .badges {
+        /* Gauge bar for Premium/Discount */
+        .deviation-container {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .deviation-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
             display: flex;
-            gap: 1rem;
+            justify-content: space-between;
         }
 
-        .badge {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
+        .progress-bg {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .badge.total {
-            background: rgba(59, 130, 246, 0.2);
-            color: #60a5fa;
+        .progress-bar {
+            position: absolute;
+            height: 100%;
+            width: 50%;
+            transition: all 1s ease;
         }
 
-        .changes-section {
+        /* 4-column Grid for main stats */
+        .stats-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        @media (max-width: 768px) {
-            .changes-section {
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        .change-box {
-            background: rgba(0,0,0,0.2);
+        .stat-box {
+            background: rgba(0, 0, 0, 0.25);
             border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.02);
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.02);
         }
-        
-        .change-box h3 {
-            margin-top: 0;
-            font-size: 1.1rem;
+
+        .stat-box h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1rem;
+            color: #e2e8f0;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .change-box.add h3 { color: var(--success); }
-        .change-box.remove h3 { color: var(--danger); }
-
         .stock-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        /* Scrollbar styling */
-        .stock-list::-webkit-scrollbar {
-            width: 6px;
-        }
-        .stock-list::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.05); 
-        }
-        .stock-list::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.2); 
-            border-radius: 10px;
+            font-size: 0.9rem;
         }
 
         .stock-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.95rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            align-items: center;
         }
 
         .stock-item:last-child {
             border-bottom: none;
         }
 
-        .stock-name { font-weight: 500; }
-        .stock-code { color: var(--text-secondary); font-size: 0.85rem; }
-        
-        .no-change {
-            color: var(--text-secondary);
-            font-style: italic;
-            font-size: 0.9rem;
-            padding: 1rem 0;
-            text-align: center;
+        .s-name {
+            font-weight: 500;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 60%;
         }
 
-        .footer {
-            margin-top: auto;
-            padding: 2rem;
+        .val-up {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .val-down {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        .val-neu {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+        }
+
+        /* Constituents full list */
+        .full-list-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .weights-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .weight-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .w-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        .w-bar-bg {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .w-bar-fill {
+            height: 100%;
+            background: var(--chart-bar);
+            border-radius: 3px;
         }
 
         .loader {
-            border: 3px solid rgba(255,255,255,0.1);
+            border: 3px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             border-top: 3px solid var(--accent);
             width: 40px;
             height: 40px;
-            -webkit-animation: spin 1s linear infinite;
             animation: spin 1s linear infinite;
             margin: 50px auto;
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
+        .empty-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="header">
-        <h1>ETF Tracker Dashboard</h1>
-        <p id="last-updated">Loading latest market data...</p>
+        <h1>Advanced ETF Tracker</h1>
+        <p id="last-updated">Loading dynamic market data...</p>
     </div>
 
     <div class="container" id="dashboard-container">
         <div class="loader" id="loader"></div>
     </div>
 
-    <div class="footer">
-        Automated with GitHub Actions • Data sourced from KRX
-    </div>
-
     <script>
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
         async function fetchDashboardData() {
             try {
-                // To avoid caching issues since this is static HTML
                 const response = await fetch(`dashboard_data.json?t=${new Date().getTime()}`);
                 if (!response.ok) throw new Error("Data not found");
                 const data = await response.json();
                 renderDashboard(data);
             } catch (error) {
                 document.getElementById('loader').style.display = 'none';
-                document.getElementById('dashboard-container').innerHTML = 
-                    `<div style="text-align:center; color: #ef4444; padding: 2rem;">
-                        <h3>Failed to load data.</h3>
-                        <p>Is dashboard_data.json generated?</p>
-                    </div>`;
+                document.getElementById('dashboard-container').innerHTML = `<p style="text-align:center;color:var(--danger)">데이터를 불러올 수 없습니다.</p>`;
             }
         }
 
         function renderDashboard(data) {
             document.getElementById('loader').style.display = 'none';
-            document.getElementById('last-updated').innerText = `Last Updated: ${data.last_updated}`;
-            
+            document.getElementById('last-updated').innerHTML = `기준일: <b>${data.business_day}</b> <span style="font-size:0.8rem; opacity:0.6">(Updated: ${data.last_updated})</span>`;
+
             const container = document.getElementById('dashboard-container');
             container.innerHTML = '';
 
             const etfs = Object.values(data.etfs);
-            
             if (etfs.length === 0) {
-                container.innerHTML = '<p style="text-align:center;">No ETF data tracked yet.</p>';
+                container.innerHTML = '<p style="text-align:center;">추적 중인 ETF가 없습니다. (config.json 확인)</p>';
                 return;
             }
 
@@ -265,43 +310,112 @@
                 const card = document.createElement('div');
                 card.className = 'etf-card';
 
-                const additions = etf.recent_changes.added;
-                const deletions = etf.recent_changes.removed;
+                // Deviation logic
+                let devColor = 'var(--success)';
+                let devText = '저평가 (할인)';
+                let pct = 50;
+                let devValStr = etf.deviation.toFixed(2);
 
-                let additionsHtml = additions.length > 0 
-                    ? additions.map(s => `<li class="stock-item"><span class="stock-name">${s.name}</span><span class="stock-code">${s.code}</span></li>`).join('')
-                    : `<div class="no-change">최근 편입된 종목이 없습니다.</div>`;
+                if (etf.deviation > 0) {
+                    devColor = 'var(--danger)';
+                    devText = '고평가 (할증)';
+                    pct = 50 + Math.min(etf.deviation * 10, 50); // Scale logic for visual
+                } else if (etf.deviation < 0) {
+                    pct = 50 - Math.min(Math.abs(etf.deviation) * 10, 50);
+                } else {
+                    devText = '적정치';
+                }
 
-                let deletionsHtml = deletions.length > 0
-                    ? deletions.map(s => `<li class="stock-item"><span class="stock-name">${s.name}</span><span class="stock-code">${s.code}</span></li>`).join('')
-                    : `<div class="no-change">최근 편출된 종목이 없습니다.</div>`;
+                const devHtml = `
+                    <div class="deviation-container">
+                        <div class="deviation-title">
+                            <span>NAV 대비 괴리율: <b style="color:${devColor}">${devValStr}%</b></span>
+                            <span style="color:${devColor}">${devText}</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-bar" style="width:${pct}%; background:${devColor}; ${etf.deviation > 0 ? 'left:50%; width:' + (pct - 50) + '%' : 'right:50%; width:' + (50 - pct) + '%'}"></div>
+                            <div style="position:absolute; width:2px; height:10px; background:#fff; left:50%; top:-1px;"></div>
+                        </div>
+                    </div>
+                `;
+
+                // Additions/Deletions
+                const adds = etf.recent_changes.added;
+                const rems = etf.recent_changes.removed;
+                let changesHtml = '';
+                if (adds.length > 0 || rems.length > 0) {
+                    changesHtml = `
+                    <div class="stat-box" style="grid-column: 1 / -1; background: rgba(59, 130, 246, 0.1); border-color: var(--accent);">
+                        <h3 style="color:var(--accent)">🚨 최근 편입/편출 발생</h3>
+                        <div style="display:flex; gap: 2rem;">
+                            <div style="flex:1"><b>편입:</b> ${adds.length > 0 ? adds.map(a => a.name).join(', ') : '없음'}</div>
+                            <div style="flex:1"><b>편출:</b> ${rems.length > 0 ? rems.map(a => a.name).join(', ') : '없음'}</div>
+                        </div>
+                    </div>
+                    `;
+                }
+
+                // Gainers & Losers
+                const gainersHtml = etf.gainers.map(g => `<li class="stock-item"><span class="s-name">${g.name}</span><span class="val-up">+${g.change_rate.toFixed(2)}%</span></li>`).join('');
+                const losersHtml = etf.losers.map(l => `<li class="stock-item"><span class="s-name">${l.name}</span><span class="val-down">${l.change_rate.toFixed(2)}%</span></li>`).join('');
+
+                // Net Purchases (unit: million won)
+                const f_buysHtml = etf.foreign_buys.filter(f => f.net_foreign > 0).map(f => `<li class="stock-item"><span class="s-name">${f.name}</span><span class="val-neu">${formatNumber(Math.floor(f.net_foreign / 1000000))}M</span></li>`).join('') || '<div class="empty-text">순매수 없음</div>';
+                const i_buysHtml = etf.inst_buys.filter(i => i.net_institutional > 0).map(i => `<li class="stock-item"><span class="s-name">${i.name}</span><span class="val-neu">${formatNumber(Math.floor(i.net_institutional / 1000000))}M</span></li>`).join('') || '<div class="empty-text">순매수 없음</div>';
+
+                // Top 10 weights
+                const weightsHtml = etf.top_weights.map(w => `
+                    <div class="weight-card">
+                        <div class="w-header">
+                            <span style="font-weight:600">${w.name}</span>
+                            <span style="color:var(--accent)">${w.weight.toFixed(2)}%</span>
+                        </div>
+                        <div class="w-bar-bg"><div class="w-bar-fill" style="width:${w.weight}%"></div></div>
+                    </div>
+                `).join('');
+
 
                 card.innerHTML = `
                     <div class="etf-header">
                         <div>
-                            <div class="etf-title">${etf.name} <span class="etf-code">${etf.code}</span></div>
+                            <span class="etf-title">${etf.name}</span><span class="etf-code">(${etf.code})</span>
                         </div>
-                        <div class="badges">
-                            <div class="badge total">Total Constituents: ${etf.total_constituents}</div>
+                        <div style="color:var(--text-secondary); font-size:0.9rem">총 ${etf.total_constituents} 종목</div>
+                    </div>
+
+                    ${devHtml}
+                    ${changesHtml}
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <h3>🟢 상승률 TOP 5</h3>
+                            <ul class="stock-list">${gainersHtml}</ul>
+                        </div>
+                        <div class="stat-box">
+                            <h3>🔴 하락률 TOP 5</h3>
+                            <ul class="stock-list">${losersHtml}</ul>
+                        </div>
+                        <div class="stat-box">
+                            <h3>💵 외국인 순매수 TOP 3 (백만원)</h3>
+                            <ul class="stock-list">${f_buysHtml}</ul>
+                        </div>
+                        <div class="stat-box">
+                            <h3>🏢 기관 순매수 TOP 3 (백만원)</h3>
+                            <ul class="stock-list">${i_buysHtml}</ul>
                         </div>
                     </div>
-                    <div class="changes-section">
-                        <div class="change-box add">
-                            <h3><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14m-7-7h14"></path></svg> Additions</h3>
-                            <ul class="stock-list">${additionsHtml}</ul>
-                        </div>
-                        <div class="change-box remove">
-                            <h3><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg> Deletions</h3>
-                            <ul class="stock-list">${deletionsHtml}</ul>
-                        </div>
+
+                    <div class="full-list-title">🏆 시가총액 비중 TOP 10</div>
+                    <div class="weights-container">
+                        ${weightsHtml}
                     </div>
                 `;
                 container.appendChild(card);
             });
         }
 
-        // Initialize
         fetchDashboardData();
     </script>
 </body>
+
 </html>
