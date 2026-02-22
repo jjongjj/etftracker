@@ -13,12 +13,12 @@
     {
       "code": "229200",
       "name": "KODEX 코스닥150",
-      "enabled": false
+      "enabled": true
     },
     {
       "code": "379800",
       "name": "KODEX 미국테크TOP10",
-      "enabled": false
+      "enabled": true
     }
   ]
 }
