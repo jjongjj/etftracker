@@ -1,5 +1,878 @@
 {
-  "last_updated": "2026-02-22 07:56:55",
+  "last_updated": "2026-02-22 09:07:54",
   "business_day": "20260220",
-  "etfs": {}
+  "etfs": {
+    "273620": {
+      "name": "KODEX MSCI Korea",
+      "code": "273620",
+      "total_constituents": 20,
+      "deviation": 0.0,
+      "recent_changes": {
+        "added": [],
+        "removed": []
+      },
+      "gainers": [
+        {
+          "code": "096770",
+          "name": "SK이노베이션",
+          "change_rate": 7.59,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "change_rate": 6.15,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "032830",
+          "name": "삼성생명",
+          "change_rate": 4.78,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "028260",
+          "name": "삼성물산",
+          "change_rate": 3.6,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "323410",
+          "name": "카카오뱅크",
+          "change_rate": 2.14,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ],
+      "losers": [
+        {
+          "code": "068270",
+          "name": "셀트리온",
+          "change_rate": -1.02,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "005380",
+          "name": "현대차",
+          "change_rate": -0.78,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "373220",
+          "name": "LG에너지솔루션",
+          "change_rate": -0.5,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "change_rate": 0.05,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "035720",
+          "name": "카카오",
+          "change_rate": 0.52,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ],
+      "foreign_buys": [
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "change_rate": 0.05,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "change_rate": 6.15,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "373220",
+          "name": "LG에너지솔루션",
+          "change_rate": -0.5,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ],
+      "inst_buys": [
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "change_rate": 0.05,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "change_rate": 6.15,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "373220",
+          "name": "LG에너지솔루션",
+          "change_rate": -0.5,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ],
+      "top_weights": [
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "change_rate": 0.05,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "change_rate": 6.15,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "373220",
+          "name": "LG에너지솔루션",
+          "change_rate": -0.5,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "207940",
+          "name": "삼성바이오로직스",
+          "change_rate": 0.93,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "005380",
+          "name": "현대차",
+          "change_rate": -0.78,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "068270",
+          "name": "셀트리온",
+          "change_rate": -1.02,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000270",
+          "name": "기아",
+          "change_rate": 1.06,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "051910",
+          "name": "LG화학",
+          "change_rate": 0.75,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "105560",
+          "name": "KB금융",
+          "change_rate": 1.38,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "055550",
+          "name": "신한지주",
+          "change_rate": 1.69,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ],
+      "constituents": [
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "change_rate": 0.05,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "change_rate": 6.15,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "373220",
+          "name": "LG에너지솔루션",
+          "change_rate": -0.5,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "207940",
+          "name": "삼성바이오로직스",
+          "change_rate": 0.93,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "005380",
+          "name": "현대차",
+          "change_rate": -0.78,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "068270",
+          "name": "셀트리온",
+          "change_rate": -1.02,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000270",
+          "name": "기아",
+          "change_rate": 1.06,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "051910",
+          "name": "LG화학",
+          "change_rate": 0.75,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "105560",
+          "name": "KB금융",
+          "change_rate": 1.38,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "055550",
+          "name": "신한지주",
+          "change_rate": 1.69,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "005490",
+          "name": "POSCO홀딩스",
+          "change_rate": 1.29,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "035420",
+          "name": "NAVER",
+          "change_rate": 0.59,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "032830",
+          "name": "삼성생명",
+          "change_rate": 4.78,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "012330",
+          "name": "현대모비스",
+          "change_rate": 0.57,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "028260",
+          "name": "삼성물산",
+          "change_rate": 3.6,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "066570",
+          "name": "LG전자",
+          "change_rate": 2.06,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "323410",
+          "name": "카카오뱅크",
+          "change_rate": 2.14,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "035720",
+          "name": "카카오",
+          "change_rate": 0.52,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "096770",
+          "name": "SK이노베이션",
+          "change_rate": 7.59,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "011200",
+          "name": "HMM",
+          "change_rate": 1.98,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ]
+    },
+    "069500": {
+      "name": "KODEX 200",
+      "code": "069500",
+      "total_constituents": 20,
+      "deviation": 0.0,
+      "recent_changes": {
+        "added": [],
+        "removed": []
+      },
+      "gainers": [
+        {
+          "code": "096770",
+          "name": "SK이노베이션",
+          "change_rate": 7.59,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "change_rate": 6.15,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "032830",
+          "name": "삼성생명",
+          "change_rate": 4.78,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "028260",
+          "name": "삼성물산",
+          "change_rate": 3.6,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "323410",
+          "name": "카카오뱅크",
+          "change_rate": 2.14,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ],
+      "losers": [
+        {
+          "code": "068270",
+          "name": "셀트리온",
+          "change_rate": -1.02,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "005380",
+          "name": "현대차",
+          "change_rate": -0.78,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "373220",
+          "name": "LG에너지솔루션",
+          "change_rate": -0.5,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "change_rate": 0.05,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "035720",
+          "name": "카카오",
+          "change_rate": 0.52,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ],
+      "foreign_buys": [
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "change_rate": 0.05,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "change_rate": 6.15,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "373220",
+          "name": "LG에너지솔루션",
+          "change_rate": -0.5,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ],
+      "inst_buys": [
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "change_rate": 0.05,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "change_rate": 6.15,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "373220",
+          "name": "LG에너지솔루션",
+          "change_rate": -0.5,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ],
+      "top_weights": [
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "change_rate": 0.05,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "change_rate": 6.15,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "373220",
+          "name": "LG에너지솔루션",
+          "change_rate": -0.5,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "207940",
+          "name": "삼성바이오로직스",
+          "change_rate": 0.93,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "005380",
+          "name": "현대차",
+          "change_rate": -0.78,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "068270",
+          "name": "셀트리온",
+          "change_rate": -1.02,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000270",
+          "name": "기아",
+          "change_rate": 1.06,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "051910",
+          "name": "LG화학",
+          "change_rate": 0.75,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "105560",
+          "name": "KB금융",
+          "change_rate": 1.38,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "055550",
+          "name": "신한지주",
+          "change_rate": 1.69,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ],
+      "constituents": [
+        {
+          "code": "005930",
+          "name": "삼성전자",
+          "change_rate": 0.05,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000660",
+          "name": "SK하이닉스",
+          "change_rate": 6.15,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "373220",
+          "name": "LG에너지솔루션",
+          "change_rate": -0.5,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "207940",
+          "name": "삼성바이오로직스",
+          "change_rate": 0.93,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "005380",
+          "name": "현대차",
+          "change_rate": -0.78,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "068270",
+          "name": "셀트리온",
+          "change_rate": -1.02,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "000270",
+          "name": "기아",
+          "change_rate": 1.06,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "051910",
+          "name": "LG화학",
+          "change_rate": 0.75,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "105560",
+          "name": "KB금융",
+          "change_rate": 1.38,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "055550",
+          "name": "신한지주",
+          "change_rate": 1.69,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "005490",
+          "name": "POSCO홀딩스",
+          "change_rate": 1.29,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "035420",
+          "name": "NAVER",
+          "change_rate": 0.59,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "032830",
+          "name": "삼성생명",
+          "change_rate": 4.78,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "012330",
+          "name": "현대모비스",
+          "change_rate": 0.57,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "028260",
+          "name": "삼성물산",
+          "change_rate": 3.6,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "066570",
+          "name": "LG전자",
+          "change_rate": 2.06,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "323410",
+          "name": "카카오뱅크",
+          "change_rate": 2.14,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "035720",
+          "name": "카카오",
+          "change_rate": 0.52,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "096770",
+          "name": "SK이노베이션",
+          "change_rate": 7.59,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        },
+        {
+          "code": "011200",
+          "name": "HMM",
+          "change_rate": 1.98,
+          "net_foreign": 0,
+          "net_institutional": 0,
+          "market_cap": 0,
+          "weight": 0.0
+        }
+      ]
+    }
+  }
 }
