@@ -1,0 +1,44 @@
+name: Daily ETF Tracker
+
+on:
+  schedule:
+    # Runs at 10:00 UTC (19:00 KST) every weekday (Monday through Friday)
+    - cron: '0 10 * * 1-5'
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions tab
+
+jobs:
+  track-and-update:
+    runs-on: ubuntu-latest
+    
+    # Required to allow the action to commit and push changes back
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Tracker Script
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python tracker.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add history/ dashboard_data.json
+          
+          # Only commit if there are changes
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update ETF constituents [skip ci]"
+          git push

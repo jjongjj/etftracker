@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>ETF Tracker Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header {
+            width: 100%;
+            padding: 3rem 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(15,23,42,1) 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            padding: 2rem 1rem;
+            box-sizing: border-box;
+        }
+
+        .etf-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .etf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .etf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .etf-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .etf-code {
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 8px;
+            color: var(--text-secondary);
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge.total {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+
+        .changes-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .changes-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .change-box {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.02);
+        }
+        
+        .change-box h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .change-box.add h3 { color: var(--success); }
+        .change-box.remove h3 { color: var(--danger); }
+
+        .stock-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        /* Scrollbar styling */
+        .stock-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .stock-list::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05); 
+        }
+        .stock-list::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2); 
+            border-radius: 10px;
+        }
+
+        .stock-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+        }
+
+        .stock-item:last-child {
+            border-bottom: none;
+        }
+
+        .stock-name { font-weight: 500; }
+        .stock-code { color: var(--text-secondary); font-size: 0.85rem; }
+        
+        .no-change {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .loader {
+            border: 3px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--accent);
+            width: 40px;
+            height: 40px;
+            -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+            margin: 50px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>ETF Tracker Dashboard</h1>
+        <p id="last-updated">Loading latest market data...</p>
+    </div>
+
+    <div class="container" id="dashboard-container">
+        <div class="loader" id="loader"></div>
+    </div>
+
+    <div class="footer">
+        Automated with GitHub Actions • Data sourced from KRX
+    </div>
+
+    <script>
+        async function fetchDashboardData() {
+            try {
+                // To avoid caching issues since this is static HTML
+                const response = await fetch(`dashboard_data.json?t=${new Date().getTime()}`);
+                if (!response.ok) throw new Error("Data not found");
+                const data = await response.json();
+                renderDashboard(data);
+            } catch (error) {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('dashboard-container').innerHTML = 
+                    `<div style="text-align:center; color: #ef4444; padding: 2rem;">
+                        <h3>Failed to load data.</h3>
+                        <p>Is dashboard_data.json generated?</p>
+                    </div>`;
+            }
+        }
+
+        function renderDashboard(data) {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('last-updated').innerText = `Last Updated: ${data.last_updated}`;
+            
+            const container = document.getElementById('dashboard-container');
+            container.innerHTML = '';
+
+            const etfs = Object.values(data.etfs);
+            
+            if (etfs.length === 0) {
+                container.innerHTML = '<p style="text-align:center;">No ETF data tracked yet.</p>';
+                return;
+            }
+
+            etfs.forEach(etf => {
+                const card = document.createElement('div');
+                card.className = 'etf-card';
+
+                const additions = etf.recent_changes.added;
+                const deletions = etf.recent_changes.removed;
+
+                let additionsHtml = additions.length > 0 
+                    ? additions.map(s => `<li class="stock-item"><span class="stock-name">${s.name}</span><span class="stock-code">${s.code}</span></li>`).join('')
+                    : `<div class="no-change">최근 편입된 종목이 없습니다.</div>`;
+
+                let deletionsHtml = deletions.length > 0
+                    ? deletions.map(s => `<li class="stock-item"><span class="stock-name">${s.name}</span><span class="stock-code">${s.code}</span></li>`).join('')
+                    : `<div class="no-change">최근 편출된 종목이 없습니다.</div>`;
+
+                card.innerHTML = `
+                    <div class="etf-header">
+                        <div>
+                            <div class="etf-title">${etf.name} <span class="etf-code">${etf.code}</span></div>
+                        </div>
+                        <div class="badges">
+                            <div class="badge total">Total Constituents: ${etf.total_constituents}</div>
+                        </div>
+                    </div>
+                    <div class="changes-section">
+                        <div class="change-box add">
+                            <h3><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14m-7-7h14"></path></svg> Additions</h3>
+                            <ul class="stock-list">${additionsHtml}</ul>
+                        </div>
+                        <div class="change-box remove">
+                            <h3><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg> Deletions</h3>
+                            <ul class="stock-list">${deletionsHtml}</ul>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Initialize
+        fetchDashboardData();
+    </script>
+</body>
+</html>
