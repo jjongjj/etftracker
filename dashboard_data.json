@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-01 16:50:03",
-  "business_day": "20261001",
+  "last_updated": "2026-10-02 16:03:31",
+  "business_day": "20261002",
   "etfs": {
     "273620": {
       "name": "KODEX MSCI Korea",
@@ -14,7 +14,7 @@
       "gainers": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -23,7 +23,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -32,7 +32,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -41,7 +41,7 @@
         },
         {
           "code": "207940",
-          "name": "207940",
+          "name": "삼성바이오로직스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -50,7 +50,7 @@
         },
         {
           "code": "005380",
-          "name": "005380",
+          "name": "현대차",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -61,7 +61,7 @@
       "losers": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -70,7 +70,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -79,7 +79,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -88,7 +88,7 @@
         },
         {
           "code": "207940",
-          "name": "207940",
+          "name": "삼성바이오로직스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -97,7 +97,7 @@
         },
         {
           "code": "005380",
-          "name": "005380",
+          "name": "현대차",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -108,7 +108,7 @@
       "foreign_buys": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -117,7 +117,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -126,7 +126,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -137,7 +137,7 @@
       "inst_buys": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -146,7 +146,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -155,7 +155,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -166,7 +166,7 @@
       "top_weights": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -175,7 +175,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -184,7 +184,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -193,7 +193,7 @@
         },
         {
           "code": "207940",
-          "name": "207940",
+          "name": "삼성바이오로직스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -202,7 +202,7 @@
         },
         {
           "code": "005380",
-          "name": "005380",
+          "name": "현대차",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -211,7 +211,7 @@
         },
         {
           "code": "068270",
-          "name": "068270",
+          "name": "셀트리온",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -220,7 +220,7 @@
         },
         {
           "code": "000270",
-          "name": "000270",
+          "name": "기아",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -229,7 +229,7 @@
         },
         {
           "code": "051910",
-          "name": "051910",
+          "name": "LG화학",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -238,7 +238,7 @@
         },
         {
           "code": "105560",
-          "name": "105560",
+          "name": "KB금융",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -247,7 +247,7 @@
         },
         {
           "code": "055550",
-          "name": "055550",
+          "name": "신한지주",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -258,7 +258,7 @@
       "constituents": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -267,7 +267,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -276,7 +276,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -285,7 +285,7 @@
         },
         {
           "code": "207940",
-          "name": "207940",
+          "name": "삼성바이오로직스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -294,7 +294,7 @@
         },
         {
           "code": "005380",
-          "name": "005380",
+          "name": "현대차",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -303,7 +303,7 @@
         },
         {
           "code": "068270",
-          "name": "068270",
+          "name": "셀트리온",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -312,7 +312,7 @@
         },
         {
           "code": "000270",
-          "name": "000270",
+          "name": "기아",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -321,7 +321,7 @@
         },
         {
           "code": "051910",
-          "name": "051910",
+          "name": "LG화학",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -330,7 +330,7 @@
         },
         {
           "code": "105560",
-          "name": "105560",
+          "name": "KB금융",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -339,7 +339,7 @@
         },
         {
           "code": "055550",
-          "name": "055550",
+          "name": "신한지주",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -348,7 +348,7 @@
         },
         {
           "code": "005490",
-          "name": "005490",
+          "name": "POSCO홀딩스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -357,7 +357,7 @@
         },
         {
           "code": "035420",
-          "name": "035420",
+          "name": "NAVER",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -366,7 +366,7 @@
         },
         {
           "code": "032830",
-          "name": "032830",
+          "name": "삼성생명",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -375,7 +375,7 @@
         },
         {
           "code": "012330",
-          "name": "012330",
+          "name": "현대모비스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -384,7 +384,7 @@
         },
         {
           "code": "028260",
-          "name": "028260",
+          "name": "삼성물산",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -393,7 +393,7 @@
         },
         {
           "code": "066570",
-          "name": "066570",
+          "name": "LG전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -402,7 +402,7 @@
         },
         {
           "code": "323410",
-          "name": "323410",
+          "name": "카카오뱅크",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -411,7 +411,7 @@
         },
         {
           "code": "035720",
-          "name": "035720",
+          "name": "카카오",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -420,7 +420,7 @@
         },
         {
           "code": "096770",
-          "name": "096770",
+          "name": "SK이노베이션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -429,7 +429,7 @@
         },
         {
           "code": "011200",
-          "name": "011200",
+          "name": "HMM",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -450,7 +450,7 @@
       "gainers": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -459,7 +459,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -468,7 +468,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -477,7 +477,7 @@
         },
         {
           "code": "207940",
-          "name": "207940",
+          "name": "삼성바이오로직스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -486,7 +486,7 @@
         },
         {
           "code": "005380",
-          "name": "005380",
+          "name": "현대차",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -497,7 +497,7 @@
       "losers": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -506,7 +506,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -515,7 +515,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -524,7 +524,7 @@
         },
         {
           "code": "207940",
-          "name": "207940",
+          "name": "삼성바이오로직스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -533,7 +533,7 @@
         },
         {
           "code": "005380",
-          "name": "005380",
+          "name": "현대차",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -544,7 +544,7 @@
       "foreign_buys": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -553,7 +553,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -562,7 +562,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -573,7 +573,7 @@
       "inst_buys": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -582,7 +582,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -591,7 +591,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -602,7 +602,7 @@
       "top_weights": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -611,7 +611,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -620,7 +620,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -629,7 +629,7 @@
         },
         {
           "code": "207940",
-          "name": "207940",
+          "name": "삼성바이오로직스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -638,7 +638,7 @@
         },
         {
           "code": "005380",
-          "name": "005380",
+          "name": "현대차",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -647,7 +647,7 @@
         },
         {
           "code": "068270",
-          "name": "068270",
+          "name": "셀트리온",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -656,7 +656,7 @@
         },
         {
           "code": "000270",
-          "name": "000270",
+          "name": "기아",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -665,7 +665,7 @@
         },
         {
           "code": "051910",
-          "name": "051910",
+          "name": "LG화학",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -674,7 +674,7 @@
         },
         {
           "code": "105560",
-          "name": "105560",
+          "name": "KB금융",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -683,7 +683,7 @@
         },
         {
           "code": "055550",
-          "name": "055550",
+          "name": "신한지주",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -694,7 +694,7 @@
       "constituents": [
         {
           "code": "005930",
-          "name": "005930",
+          "name": "삼성전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -703,7 +703,7 @@
         },
         {
           "code": "000660",
-          "name": "000660",
+          "name": "SK하이닉스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -712,7 +712,7 @@
         },
         {
           "code": "373220",
-          "name": "373220",
+          "name": "LG에너지솔루션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -721,7 +721,7 @@
         },
         {
           "code": "207940",
-          "name": "207940",
+          "name": "삼성바이오로직스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -730,7 +730,7 @@
         },
         {
           "code": "005380",
-          "name": "005380",
+          "name": "현대차",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -739,7 +739,7 @@
         },
         {
           "code": "068270",
-          "name": "068270",
+          "name": "셀트리온",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -748,7 +748,7 @@
         },
         {
           "code": "000270",
-          "name": "000270",
+          "name": "기아",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -757,7 +757,7 @@
         },
         {
           "code": "051910",
-          "name": "051910",
+          "name": "LG화학",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -766,7 +766,7 @@
         },
         {
           "code": "105560",
-          "name": "105560",
+          "name": "KB금융",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -775,7 +775,7 @@
         },
         {
           "code": "055550",
-          "name": "055550",
+          "name": "신한지주",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -784,7 +784,7 @@
         },
         {
           "code": "005490",
-          "name": "005490",
+          "name": "POSCO홀딩스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -793,7 +793,7 @@
         },
         {
           "code": "035420",
-          "name": "035420",
+          "name": "NAVER",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -802,7 +802,7 @@
         },
         {
           "code": "032830",
-          "name": "032830",
+          "name": "삼성생명",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -811,7 +811,7 @@
         },
         {
           "code": "012330",
-          "name": "012330",
+          "name": "현대모비스",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -820,7 +820,7 @@
         },
         {
           "code": "028260",
-          "name": "028260",
+          "name": "삼성물산",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -829,7 +829,7 @@
         },
         {
           "code": "066570",
-          "name": "066570",
+          "name": "LG전자",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -838,7 +838,7 @@
         },
         {
           "code": "323410",
-          "name": "323410",
+          "name": "카카오뱅크",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -847,7 +847,7 @@
         },
         {
           "code": "035720",
-          "name": "035720",
+          "name": "카카오",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -856,7 +856,7 @@
         },
         {
           "code": "096770",
-          "name": "096770",
+          "name": "SK이노베이션",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
@@ -865,7 +865,7 @@
         },
         {
           "code": "011200",
-          "name": "011200",
+          "name": "HMM",
           "change_rate": NaN,
           "net_foreign": 0,
           "net_institutional": 0,
