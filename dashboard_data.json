@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-10-29 16:32:38",
-  "business_day": "20261029",
+  "last_updated": "2026-10-30 16:27:51",
+  "business_day": "20261030",
   "etfs": {
     "273620": {
       "name": "KODEX MSCI Korea",
@@ -403,7 +403,7 @@
         {
           "code": "323410",
           "name": "323410",
-          "change_rate": NaN,
+          "change_rate": 0.0,
           "net_foreign": 0,
           "net_institutional": 0,
           "market_cap": 0,
